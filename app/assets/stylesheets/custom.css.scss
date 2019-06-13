@@ -29,6 +29,13 @@
 
 }
 
+.nav {
+  li {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 .nav.navbar-nav {
 
   .navbar-link {
@@ -53,7 +60,7 @@
 }
 
 .nav.navbar-right li {
-  
+
   .btn {
     color: #fff !important;
     margin-top: 5%;
