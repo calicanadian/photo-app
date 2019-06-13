@@ -1,0 +1,49 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{http_equiv: "X-UA-Compatible", content: "IE=Edge,chrome=1" }
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %title
+      = content_for?(:title) ? yield(:title) : "PhotoApp"
+    = csrf_meta_tags
+
+    = stylesheet_link_tag "application", :media => "all"
+
+    = javascript_include_tag "application"
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    %script{src: "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js", type: "text/javascript"}
+    <![endif]-->
+  %body
+    .navbar.navbar-defaul.navbar-static-top
+      .container
+        %button{type: "button", class: "navbar-toggle", data_toggle: "collapse", data_target: ".navbar-responsive-collapse" }
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "PhotoApp", "#", class: "navbar-brand"
+        .navbar-collapse.navbar-responsive-collapse.collapse
+          %ul.nav.navbar-nav
+            %li= link_to "Link1", "/path1"
+            %li= link_to "Link2", "/path2"
+            %li= link_to "Link3", "/path3"
+          %ul.nav.navbar-right.col-md-4
+            - if current_user
+              %li.col-md-8.user-name
+                = link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile'
+              %li.col-md-3.col-md-offset-1.pull-right
+                = link_to 'Logout', destroy_user_session_path, class: "btn btn-xs btn-danger", title: "Logout", method: :delete
+            - else
+              %li.col-md-4.pull-right
+                = link_to 'Sign In', new_user_session_path, class: "btn btn-primary", title: "Sign In"
+    .container
+      .row
+        .col-lg-12
+          = bootstrap_flash
+          = yield
+      %footer
+        %p
+          &copy; Company
+          = Time.now.year
