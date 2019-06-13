@@ -29,12 +29,12 @@
             %li= link_to "Link1", "/path1"
             %li= link_to "Link2", "/path2"
             %li= link_to "Link3", "/path3"
-          %ul.nav.navbar-right
+          %ul.nav.navbar-right.col-md-4
             - if current_user
-              %li.col-md-4.user-name
+              %li.col-md-8.user-name
                 = link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile'
               %li.col-md-1 &nbsp;
-              %li.col-md-3.pull-right
+              %li.col-md-3.logout
                 = link_to 'Logout', destroy_user_session_path, class: "btn btn-xs btn-danger", title: "Logout", method: :delete
             - else
               %li.col-md-4.pull-right
