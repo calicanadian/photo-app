@@ -18,6 +18,10 @@ gem 'uglifier', '>= 1.3.0'
 # Font awesome
 gem 'font-awesome-rails'
 gem 'stripe'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
